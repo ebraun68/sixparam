@@ -14,16 +14,18 @@ amino acids reveals variation among proteins.
 
 There are three programs necessary to estimate the model parameters:
 
-1. optimize-biophysical-models.pl
+1. optimize-biophysical-models.pl --
 Perl program that reads a control file and optimizes a set of submodels based on eq3 and
-eq4 from the manuscript. This program expects a relaxed phylip format protein datafile
-and a newick format treefile. This program calls a number of programs and requires some
-data files, including those listed below. The path to those files must be saved in the
-program. For example:
+eq4 from the manuscript. 
+
+This program expects a relaxed phylip format protein datafile
+and a newick format treefile. 
+
+This program calls a number of programs and requires some data files, including those listed below. The path to those files must be saved in the program. For example:
 	--	the path to IQ-TREE is on lines 21-23:
 my($iqexec) = "iqtree-omp-1.5.5"; # iqtree executable
 my($threads) = " -nt 2";          # number of threads is multithread iqtree is used
-\# my($threads) = " ";             # remove comment to use with serial iqtree
+\# my($threads) = " ";            # remove comment to use with serial iqtree
 	--	the path to the generate-biophysical-matrix program is saved in the calc_lnL
 		subroutine on line 444
 system("./generate-biophysical-matrix $basemodel $genmat temp-biophys.dat $vol $pol $comp $arom $tv $gc 0");
@@ -35,14 +37,16 @@ Where:
 	--  ctlfile = control file
 	--  outfile = tab-delimited output file
 
-2. generate-biophysical-matrix.cpp
+2. generate-biophysical-matrix.cpp --
 C++ program that takes the model parameters as input and generates a PAML format R matrix
-using those parameters. To compile using the GNU compiler simply use:
+using those parameters. 
+
+To compile using the GNU compiler simply use:
  $ g++ -c generate-biophysical-matrix.cpp
  $ g++ -o generate-biophysical-matrix generate-biophysical-matrix.o
 
-3. IQ-TREE: Download from http://www.iqtree.org
-This code has been tested with versions 1.5.5 and 1.5.6
+3. IQ-TREE: Download from http://www.iqtree.org --
+The sixparam code has been tested with versions 1.5.5 and 1.5.6
 
 
 #######################################
