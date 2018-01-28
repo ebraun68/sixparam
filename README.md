@@ -21,13 +21,22 @@ eq4 from the manuscript.
 This program expects a relaxed phylip format protein datafile
 and a newick format treefile. 
 
-This program calls a number of programs and requires some data files, including those listed below. The path to those files must be saved in the program. For example:
+This program calls a number of programs and requires some data files, including those listed below.
+
+The path to those files must be saved in the program. For example:
+
 	--	the path to IQ-TREE is on lines 21-23:
+	
 my($iqexec) = "iqtree-omp-1.5.5"; # iqtree executable
+
 my($threads) = " -nt 2";          # number of threads is multithread iqtree is used
+
 \# my($threads) = " ";            # remove comment to use with serial iqtree
+
+
 	--	the path to the generate-biophysical-matrix program is saved in the calc_lnL
 		subroutine on line 444
+
 system("./generate-biophysical-matrix $basemodel $genmat temp-biophys.dat $vol $pol $comp $arom $tv $gc 0");
 
 To use the optimize-biophysical-models.pl program run as follows:
