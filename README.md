@@ -23,9 +23,7 @@ This program expects a relaxed phylip format protein datafile and a newick forma
 (the path to IQ-TREE is on lines 21-23)
 	
 my($iqexec) = "iqtree-omp-1.5.5"; # iqtree executable
-
 my($threads) = " -nt 2";          # number of threads is multithread iqtree is used
-
 \# my($threads) = " ";            # remove comment to use with serial iqtree
 
 (the path to the generate-biophysical-matrix program is saved in the calc_lnL subroutine on line 444)
@@ -35,6 +33,7 @@ system("./generate-biophysical-matrix $basemodel $genmat temp-biophys.dat $vol $
 To use the optimize-biophysical-models.pl program run as follows:
 
 $ ./optimize-biophysical-models.pl <ctlfile> <outfile>
+	
 Where:
 	--  ctlfile = control file
 	--  outfile = tab-delimited output file
