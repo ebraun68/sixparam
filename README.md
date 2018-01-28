@@ -24,7 +24,7 @@ This program expects a relaxed phylip format protein datafile and a newick forma
 	
 	my($iqexec) = "iqtree-omp-1.5.5"; # iqtree executable
 	my($threads) = " -nt 2";          # number of threads is multithread iqtree is used
-	# my($threads) = " ";            # remove comment to use with serial iqtree
+	# my($threads) = " ";             # remove comment to use with serial iqtree
 
 (the path to the generate-biophysical-matrix program is saved in the calc_lnL subroutine on line 444)
 
@@ -34,9 +34,9 @@ To use the optimize-biophysical-models.pl program run as follows:
 
 $ ./optimize-biophysical-models.pl <ctlfile> <outfile>
 	
-Where:
-	--  ctlfile = control file
-	--  outfile = tab-delimited output file
+	Where:
+		--  ctlfile = control file
+		--  outfile = tab-delimited output file
 
 	--	2. generate-biophysical-matrix.cpp --
 C++ program that takes the model parameters as input and generates a PAML format R matrix
@@ -55,17 +55,17 @@ The sixparam code has been tested with versions 1.5.5 and 1.5.6
 
 The eq3 models have six parameters that reflect weights on changes in four different
 amino acid properties:
-	V = molecular volume
-	P = polarity
-	C = composition (atomic weight ratio of hetero to carbon atoms)
-	A = aromaticity (PC III from Sneath 1966)
+		V = molecular volume
+			P = polarity
+		C = composition (atomic weight ratio of hetero to carbon atoms)
+		A = aromaticity (PC III from Sneath 1966)
 The other two parameters capture mutational input:
-	G = weights the minimum # of nucleotide changes necessary for an amino acid interchange
-	T = weights the impact of transversions
+		G = weights the minimum # of nucleotide changes necessary for an amino acid interchange
+		T = weights the impact of transversions
 	
 eq3 models are based on this equation:
 
-Rij = exp(-VdeltaVij) exp(-PdeltaP) exp(-CdeltaC) exp(-AdeltaA) exp(-TdeltaT) 1/Nij^G
+	Rij = exp(-VdeltaVij) exp(-PdeltaP) exp(-CdeltaC) exp(-AdeltaA) exp(-TdeltaT) 1/Nij^G
 
 Rij is the relevant element of the R matrix. The "delta" values are normalized differences 
 between amino acid i and j in each amino acid property. deltaT is 1 if interchanging amino
@@ -75,7 +75,7 @@ number of nucleotide changes necessary for an interchange of amino acids i and j
 The eq4 models add information from an empirical model of amino acid substitution, as
 shown in this equation:
 
-Rij = Kij exp(-VdeltaVij) exp(-PdeltaP) exp(-CdeltaC) exp(-AdeltaA) exp(-TdeltaT) 1/Nij^G
+	Rij = Kij exp(-VdeltaVij) exp(-PdeltaP) exp(-CdeltaC) exp(-AdeltaA) exp(-TdeltaT) 1/Nij^G
 
 Kij is the relevant element from an empirical model, such as the LG (Le and Gascuel 2008)
 or JTT (Jones et al. 1992) models.
@@ -87,12 +87,12 @@ or JTT (Jones et al. 1992) models.
 IQ-TREE tests 18 empirical models (listed below). PAML format data matrices with the data
 for these models are saved in the "empirical_models" directory
 
-Blosum62	HIVw		mtREV
-cpREV		JTT			mtZOA
-Dayhoff		JTTDCMut	PMB
-DCMut		LG			rtREV
-FLU			mtART		VT
-HIVb		mtMAM		WAG
+	Blosum62	HIVw		mtREV
+	cpREV		JTT		mtZOA
+	Dayhoff		JTTDCMut	PMB
+	DCMut		LG		rtREV
+	FLU		mtART		VT
+	HIVb		mtMAM		WAG
 
 Matrices for the universal genetic code are also provided.
 
@@ -122,21 +122,21 @@ Eight concatenated data matrices and two trees (Coelomata and Ecdysozoa topologi
 All test_data folders contain a subfolder with control files to run analyses of the test
 datasets. The format for the control files is:
 
-infile.phy	treefile.tre	poiss	universal_code	ml	gamma
-0	0	0	0	0	0	poiss
-1	0	0	0	0	0	V
-0	1	0	0	0	0	P
-etc.
-1	1	1	1	1	1	VPCATG
+	infile.phy	treefile.tre	poiss	universal_code	ml	gamma
+	0	0	0	0	0	0	poiss
+	1	0	0	0	0	0	V
+	0	1	0	0	0	0	P
+	etc.
+	1	1	1	1	1	1	VPCATG
 
 -or-
 
-infile.phy	treefile.tre	empirical_models/MODEL.dat	universal_code	ml	gamma
-0	0	0	0	0	0	MODEL
-1	0	0	0	0	0	MODEL+V
-0	1	0	0	0	0	MODEL+P
-etc.
-1	1	1	1	1	1	MODEL+VPCATG
+	infile.phy	treefile.tre	empirical_models/MODEL.dat	universal_code	ml	gamma
+	0	0	0	0	0	0	MODEL
+	1	0	0	0	0	0	MODEL+V
+	0	1	0	0	0	0	MODEL+P
+	etc.
+	1	1	1	1	1	1	MODEL+VPCATG
 
 For the input files the path should be specified unless the files are in the same
 directory as optimize-biophysical-models.pl
