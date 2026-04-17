@@ -5,8 +5,7 @@
 This goal of this project is estimate parameters for the six-parameter model of protein
 evolution proposed in:
 
-Braun EL (submitted) An evolutionary model motivated by physicochemical properties of 
-amino acids reveals variation among proteins.
+Braun EL (2018) An evolutionary model motivated by physicochemical properties of amino acids reveals variation among proteins, Bioinformatics 34(13):i350–i356 https://doi.org/10.1093/bioinformatics/bty261 (Proceedings of the 2018 Intelligent Systems for Molecular Biology)
 
 
 ################
